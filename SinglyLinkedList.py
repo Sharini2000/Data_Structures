@@ -32,6 +32,27 @@ class LinkedList:
         else:
             self.head = newNode
 
+    def delete_node(self,ele):
+        if self.head == None:
+            print("List Empty")
+            return
+        if self.head.info == ele:
+            temp = self.head
+            self.head = temp.link
+            temp = None
+            return 
+        current = self.head
+        while current.link != None:
+            if current.link.info == ele:
+                temp = current.link
+                current.link = temp.link
+                temp = None
+                return
+            current = current.link
+
+        print("element not found")
+        
+
     # def insert_at_position(self,info):
     #     count = 0
     #     newNode = Node(info)
@@ -53,13 +74,21 @@ class LinkedList:
 
 
 LL = LinkedList()
+LL.delete_node(20)
 LL.insert_at_beginning(10)
 LL.insert_at_beginning(5)
+print("######")
 LL.display()
 LL.insert_at_end(15)
 LL.insert_at_end(20)
+print("######")
 LL.display()
-
+LL.delete_node(35)
+print("######")
+LL.display()
+LL.delete_node(20)
+print("######")
+LL.display()
     
 
     
