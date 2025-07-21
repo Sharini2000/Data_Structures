@@ -1,0 +1,33 @@
+// Fixed Size window
+def sliding_window_fixed(arr, k):
+    window_sum = 0
+    max_sum = 0
+
+    # Initial window
+    for i in range(k):
+        window_sum += arr[i]
+    max_sum = window_sum
+
+    # Slide the window
+    for i in range(k, len(arr)):
+        window_sum += arr[i] - arr[i - k]
+        max_sum = max(max_sum, window_sum)
+
+    return max_sum
+=========================================================
+// Variable size window
+
+def sliding_window_variable(s):
+    left = 0
+    char_set = set()
+    max_len = 0
+
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        char_set.add(s[right])
+        max_len = max(max_len, right - left + 1)
+
+    return max_len
+
