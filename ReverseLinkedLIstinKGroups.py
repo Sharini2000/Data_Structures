@@ -1,12 +1,8 @@
-# Python program to reverse a linked list 
-# in groups of given size
-
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
-# Function to reverse K groups
 def reverseKGroup(head, k):
     if head is None:
         return head
@@ -21,7 +17,6 @@ def reverseKGroup(head, k):
         nextNode = None
         count = 0
 
-        # Reverse the nodes in the current group
         while curr is not None and count < k:
             nextNode = curr.next
             curr.next = prev
@@ -29,18 +24,12 @@ def reverseKGroup(head, k):
             curr = nextNode
             count += 1
 
-        # If newHead is null, set it to the
-        # last node of the first group
         if newHead is None:
             newHead = prev
 
-        # Connect the previous group to the
-        # current reversed group
         if tail is not None:
             tail.next = prev
 
-        # Move tail to the end of 
-        # the reversed group
         tail = groupHead
 
     return newHead
